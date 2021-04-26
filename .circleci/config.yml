@@ -10,12 +10,12 @@ jobs:
     docker:
       - image: circleci/node:13.8.0
     steps:
-      - run: echo "hello <<pipeline.project.git_url>>"
+      - run: echo "hello $name"
   print_world:
     docker:
       - image: circleci/node:13.8.0
     steps:
-      - run: echo world
+      - run: echo world $dog
 workflows:
   # Name the workflow "welcome"
   welcome:
