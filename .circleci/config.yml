@@ -21,10 +21,13 @@ jobs:
       - image: circleci/node:13.8.0
     steps:  
       - run:
+          name: Create output file directory
+          command: |
+            mkdir /tmp/dir/
+      - run:
           name: Create output file and write into directory
           command: |
-          mkdir /tmp/dir/
-          echo "HELLO WORLD" > /tmp/dir/output.txt
+            echo "HELLO WORLD" > /tmp/dir/output.txt
       - persist_to_workspace:
           root: /tmp/dir
           paths:
