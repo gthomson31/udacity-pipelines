@@ -16,8 +16,8 @@ jobs:
           name: Create output file directory
           command: |
             mkdir /tmp/dir/
-      - run:
-          print_pipeline_id
+
+      - print_pipeline_id:
 
       - run:
           name: Create output file and write into directory
