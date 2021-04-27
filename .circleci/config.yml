@@ -17,9 +17,6 @@ jobs:
           command: |
             mkdir /tmp/dir/
 
-      - print_pipeline_id:
-
-
       - run:
           name: Create output file and write into directory
           command: |
@@ -28,6 +25,11 @@ jobs:
           root: /tmp/dir
           paths:
             - output.txt
+  pipelineID:
+    docker:
+      - image: circleci/node:13.8.0
+    steps:
+      - print_pipeline_id
 
   print_output_file:
     docker:
@@ -45,4 +47,5 @@ workflows:
       - save_hello_world_output
       - print_output_file:
           requires:
-            - save_hello_world_output      
+            - save_hello_world_output
+      - pipelineID
