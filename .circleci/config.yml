@@ -26,9 +26,9 @@ jobs:
           mkdir /tmp/dir/
           echo "HELLO WORLD" > /tmp/dir/output.txt
       - persist_to_workspace:
-        root: /tmp/dir
-        paths:
-          - output.txt
+          root: /tmp/dir
+          paths:
+            - output.txt
   print_output_file:
     docker:
       - image: circleci/node:13.8.0
