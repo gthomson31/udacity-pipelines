@@ -43,14 +43,10 @@ jobs:
     docker:
       - image: circleci/node:13.8.0
     steps:  
+      - run: return 1
       - run:
-          name: fail and return 1
-          command: |
-            return 1
-      - run:
-          name: print if job failes
-          command: |
-            echo previous job failed
+          name: print if job failed
+          command: echo "previous job failed"
           when: on_fail 
 
 
