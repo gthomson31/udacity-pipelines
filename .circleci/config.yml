@@ -39,6 +39,22 @@ jobs:
           at: /tmp/workspace
       - run: cat /tmp/workspace/output.txt
 
+  when_fail:
+    docker:
+      - image: circleci/node:13.8.0
+    steps:  
+      - run:
+          name: fail and return 1
+          command: |
+            return 1
+      - run:
+          name: print if job failes
+          command: |
+            echo previous job failed
+          when: on_fail 
+
+
+
 workflows:
   # Name the workflow "welcome"
   demo_working:
@@ -49,3 +65,4 @@ workflows:
           requires:
             - save_hello_world_output
       - pipelineID
+      - when_fail
